@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "category": "Learner-related",
+    "question": "Show distribution of students by highest_education",
+    "expected_sql_skeleton": "SELECT highest_education, COUNT(*) FROM studentInfo GROUP BY highest_education"
+  },
+  {
+    "id": 2,
+    "category": "Action-related",
+    "question": "Who are the 10 most active students based on total clicks in studentVle?",
+    "expected_sql_skeleton": "SELECT id_student, SUM(sum_click) FROM studentVle GROUP BY id_student ORDER BY SUM(sum_click) DESC LIMIT 10"
+  },
+  {
+    "id": 3,
+    "category": "Content-related",
+    "question": "What is the distribution of VLE activity types?",
+    "expected_sql_skeleton": "SELECT activity_type, COUNT(*) FROM vle GROUP BY activity_type"
+  },
+  {
+    "id": 4,
+    "category": "Result-related",
+    "question": "Show grade distribution by final_result across all modules",
+    "expected_sql_skeleton": "SELECT final_result, COUNT(*) FROM studentInfo GROUP BY final_result"
+  },
+  {
+    "id": 5,
+    "category": "Context-related",
+    "question": "Show peak student activity by week (based on date in studentVle)",
+    "expected_sql_skeleton": "SELECT FLOOR(date/7) AS week, SUM(sum_click) FROM studentVle GROUP BY week ORDER BY week"
+  },
+  {
+    "id": 6,
+    "category": "Social-related",
+    "question": "Are there any forum or collaborative activity types in the VLE data?",
+    "expected_sql_skeleton": "SELECT activity_type, COUNT(*) FROM vle WHERE activity_type IN ('forumng','oucollaborate','ouelluminate') GROUP BY activity_type",
+    "note": "OULAD has limited social/peer data; forumng is the closest proxy"
+  },
+  {
+    "id": 7,
+    "category": "Learner-related",
+    "question": "Show count of students by highest_education for module AAA presentation 2013J",
+    "expected_sql_skeleton": "SELECT highest_education, COUNT(*) FROM studentInfo WHERE code_module='AAA' AND code_presentation='2013J' GROUP BY highest_education"
+  },
+  {
+    "id": 8,
+    "category": "Result-related",
+    "question": "What is the average assessment score by module?",
+    "expected_sql_skeleton": "SELECT code_module, AVG(score) FROM studentAssessment JOIN assessments ON studentAssessment.id_assessment = assessments.id_assessment GROUP BY code_module"
+  },
+  {
+    "id": 9,
+    "category": "Action-related",
+    "question": "Compare total clicks per module",
+    "expected_sql_skeleton": "SELECT code_module, SUM(sum_click) FROM studentVle GROUP BY code_module"
+  },
+  {
+    "id": 10,
+    "category": "Learner-related",
+    "question": "Show the withdrawal rate by age band",
+    "expected_sql_skeleton": "SELECT age_band, SUM(CASE WHEN final_result='Withdrawn' THEN 1 ELSE 0 END)/COUNT(*) FROM studentInfo GROUP BY age_band"
+  }
+]
