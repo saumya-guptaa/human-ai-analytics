@@ -29,14 +29,35 @@ User (browser)  →  Next.js frontend (:3000)
 docker compose up -d
 ```
 
-### 2. Load OULAD data
+### 2. Download & load OULAD data
 
-Place CSV files in `./data/oulad/`, then:
+The dataset is **not included** in this repository due to its size (~443 MB). Download it from the official source:
+
+1. Go to the [Open University Learning Analytics Dataset](https://analyse.kmi.open.ac.uk/open-dataset) page
+2. Click **"Download dataset"** to get the zip file
+3. Extract the CSV files into the `data/oulad/` directory:
+
+```bash
+mkdir -p data/oulad
+unzip /path/to/downloaded/dataset.zip -d data/oulad/
+```
+
+You should end up with these 7 files inside `data/oulad/`:
+
+```
+courses.csv, assessments.csv, studentInfo.csv,
+studentRegistration.csv, studentAssessment.csv,
+studentVle.csv, vle.csv
+```
+
+Then load them into MySQL:
 
 ```bash
 pip3 install pandas sqlalchemy pymysql cryptography
 python3 scripts/load_oulad.py
 ```
+
+> **Citation:** Kuzilek J., Hlosta M., Zdrahal Z. *Open University Learning Analytics dataset.* Sci. Data 4:170171 doi: [10.1038/sdata.2017.171](https://doi.org/10.1038/sdata.2017.171) (2017). Licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ### 3. Configure environment
 
@@ -72,7 +93,7 @@ Open **http://localhost:3000** in your browser.
 ```
 ├── .env.example              # Environment template
 ├── docker-compose.yml        # MySQL 8.0 service
-├── data/oulad/               # OULAD CSV files
+├── data/oulad/               # OULAD CSV files (download separately, see above)
 ├── scripts/load_oulad.py     # CSV → MySQL loader
 ├── backend/
 │   └── index.js              # Express API server
