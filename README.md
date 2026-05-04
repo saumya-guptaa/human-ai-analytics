@@ -4,7 +4,7 @@ A self-service learning analytics dashboard that lets instructors and students e
 
 Built on the **Open University Learning Analytics Dataset (OULAD)** and inspired by the LAK'25 paper:
 
-> Wang Z., Lin W., Hu X. *Self-service Teacher-facing Learning Analytics Dashboard with Large Language Models.* Proceedings of the 15th International Learning Analytics and Knowledge Conference (LAK'25), pp. 824–830. doi: [10.1145/3706468.3706491](https://doi.org/10.1145/3706468.3706491)
+> Wang Z., Lin W., Hu X. *Self-service Teacher-facing Learning Analytics Dashboard with Large Language Models.* Proceedings of the 15th International Learning Analytics and Knowledge Conference (LAK'25), pp. 824–830. doi: [10.1145/3706468.3706491](https://dl.acm.org/doi/10.1145/3706468.3706491#sec-4)
 
 ## Features
 
